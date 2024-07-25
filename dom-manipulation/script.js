@@ -45,6 +45,8 @@ function addQuote() {
     saveQuotesToLocalStorage(); // Save to local storage
     populateCategories(); // Update categories in the filter dropdown
     showRandomQuote(); // Show the new quote
+    // Send the new quote to the server
+    sendQuoteToServer(newQuote);
   } else {
     alert("Please enter both quote and category.");
   }
@@ -119,13 +121,32 @@ function filterQuotes() {
     document.getElementById("quoteDisplay").textContent = "No quotes found for this category.";
   }
 }
+// Function to simulate sending quotes to the server
+async function sendQuoteToServer(newQuote) {
+  try {
+    const response = await fetch('https://your-server-url.com/api/quotes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newQuote)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // Handle the server response (if needed)
+    // console.log('Quote sent to server:', response);
+  } catch (error) {
+    console.error('Error sending quote to server:', error);
+  }
+}
 // Function to simulate fetching quotes from the server
 async function fetchQuotesFromServer() {
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const response = await fetch('https://your-server-url.com/api/quotes');
     const serverQuotes = await response.json();
     // Process serverQuotes to match the quote structure
-    // (You'll likely need to transform the data from JSON Placeholder)
+    // (You'll likely need to transform the data from your server)
     // For simplicity, let's just use a placeholder here:
     const processedServerQuotes = serverQuotes.map(quote => ({
       text: quote.title,
@@ -173,7 +194,6 @@ loadQuotesFromLocalStorage();
 showRandomQuote();
 // Event listener for the 'Show New Quote' button
 document.getElementById("newQuote").addEventListener("click", showRandomQuote);
-
 // Add buttons for export and import
 const exportButton = document.createElement('button');
 exportButton.textContent = 'Export Quotes';
@@ -185,6 +205,5 @@ importInput.id = 'importFile';
 importInput.accept = '.json';
 importInput.addEventListener('change', importFromJsonFile);
 document.body.appendChild(importInput);
-
 // Start the syncing process
 syncData();
