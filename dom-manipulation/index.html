@@ -15,7 +15,14 @@
   <input type="text" id="newQuoteText" placeholder="Enter quote text">
   <input type="text" id="newQuoteCategory" placeholder="Enter quote category">
   <button onclick="addQuote()">Add Quote</button>
-  
+
+
+  <h2>Filter Quotes</h2>
+  <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+    <!-- Dynamically populated categories -->
+  </select>
+
   <!-- Added the "Export Quotes" button -->
   <button id="exportQuotes">Export Quotes</button>
   <!-- Added the file input for importing JSON -->
