@@ -10,5 +10,16 @@
     <div id="quoteDisplay"></div>
     <button id="newQuote">Show New Quote</button>
     <script src="script.js"></script>
+
+    <h2>Add a Quote</h2>
+  <input type="text" id="newQuoteText" placeholder="Enter quote text">
+  <input type="text" id="newQuoteCategory" placeholder="Enter quote category">
+  <button onclick="addQuote()">Add Quote</button>
+  
+  <!-- Added the "Export Quotes" button -->
+  <button id="exportQuotes">Export Quotes</button>
+  <!-- Added the file input for importing JSON -->
+  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+
   </body>
   </html>
