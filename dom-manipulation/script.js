@@ -18,15 +18,15 @@ function loadQuotesFromLocalStorage() {
 function saveQuotesToLocalStorage() {
   localStorage.setItem("quotes", JSON.stringify(quotes));
 }
-// Load quotes from local storage on page load
-loadQuotesFromLocalStorage();
-// Function to display a random quote
+// Function to display a random quote and store it in session storage
 function showRandomQuote() {
   if (quotes.length > 0) {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const randomQuote = quotes[randomIndex];
     document.getElementById("quoteDisplay").textContent = 
         `"${randomQuote.text}" - ${randomQuote.category}`;
+    // Store the last viewed quote in session storage
+    sessionStorage.setItem("lastQuote", JSON.stringify(randomQuote));
   } else {
     document.getElementById("quoteDisplay").textContent = "No quotes available. Add some!";
   }
@@ -78,7 +78,9 @@ function importFromJsonFile(event) {
   };
   fileReader.readAsText(event.target.files[0]);
 }
-// Initial quote display
+// Load quotes from local storage on page load
+loadQuotesFromLocalStorage();
+// Display a random quote on page load
 showRandomQuote();
 // Event listener for the 'Show New Quote' button
 document.getElementById("newQuote").addEventListener("click", showRandomQuote);
