@@ -182,6 +182,22 @@ function updateQuotesFromServer(serverQuotes) {
   alert("Quotes synced with server!");
   // alert("Quotes synced with server.");
 }
+// Function to fetch quotes from the server
+function fetchQuotesFromServer() {
+  // ... (your code to fetch quotes from the server) ...
+  return fetch(serverUrl)
+    .then(response => response.json())
+    .then(serverQuotes => {
+      // Update the local quotes with server data
+      updateQuotesFromServer(serverQuotes);
+      // Display a notification (optional)
+      alert("Quotes synced with server!"); // This is now in the correct place
+    })
+    .catch(error => {
+      console.error("Error fetching quotes:", error);
+    });
+}
+
 // Function to initiate the syncing process
 function syncQuotes() {
   fetchQuotesFromServer()
