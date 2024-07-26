@@ -124,7 +124,7 @@ function filterQuotes() {
 // Function to simulate sending quotes to the server
 async function sendQuoteToServer(newQuote) {
   try {
-    const response = await fetch('https://your-server-url.com/api/quotes', {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -143,7 +143,7 @@ async function sendQuoteToServer(newQuote) {
 // Function to simulate fetching quotes from the server
 async function fetchQuotesFromServer() {
   try {
-    const response = await fetch('https://your-server-url.com/api/quotes');
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     const serverQuotes = await response.json();
     // Process serverQuotes to match the quote structure
     // (You'll likely need to transform the data from your server)
