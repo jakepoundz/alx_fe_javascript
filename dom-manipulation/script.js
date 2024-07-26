@@ -184,8 +184,16 @@ function updateQuotesFromServer(serverQuotes) {
 }
 // Function to initiate the syncing process
 function syncQuotes() {
-  fetchQuotesFromServer();
-  lastSyncedTimestamp = Date.now();
+  fetchQuotesFromServer()
+    .then(() => {
+      lastSyncedTimestamp = Date.now();
+      // Display a notification (optional)
+      alert("Quotes synced with server!"); // Now it should work correctly.
+    })
+    .catch(error => {
+      console.error("Error syncing quotes:", error);
+    });
+    
   // Set up a interval to sync again periodically (e.g., every 10 seconds)
   setInterval(syncQuotes, 10000); // Call syncQuote() every 10 seconds
 }
