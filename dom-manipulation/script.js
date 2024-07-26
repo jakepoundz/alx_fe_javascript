@@ -182,11 +182,11 @@ function updateQuotesFromServer(serverQuotes) {
   // alert("Quotes synced with server.");
 }
 // Function to initiate the syncing process
-function syncData() {
+function syncQuotes() {
   fetchQuotesFromServer();
   lastSyncedTimestamp = Date.now();
   // Set up a timer to sync again periodically (e.g., every 10 seconds)
-  setTimeout(syncData, 10000); // Call syncData() every 10 seconds
+  setTimeout(syncQuotes, 10000); // Call syncQuote() every 10 seconds
 }
 // Load quotes from local storage on page load
 loadQuotesFromLocalStorage();
@@ -206,4 +206,4 @@ importInput.accept = '.json';
 importInput.addEventListener('change', importFromJsonFile);
 document.body.appendChild(importInput);
 // Start the syncing process
-syncData(); // Call syncData() to start the initial sync
+syncQuotes(); // Call syncData() to start the initial sync
