@@ -185,8 +185,8 @@ function updateQuotesFromServer(serverQuotes) {
 function syncQuotes() {
   fetchQuotesFromServer();
   lastSyncedTimestamp = Date.now();
-  // Set up a timer to sync again periodically (e.g., every 10 seconds)
-  setTimeout(syncQuotes, 10000); // Call syncQuote() every 10 seconds
+  // Set up a interval to sync again periodically (e.g., every 10 seconds)
+  setInterval(syncQuotes, 10000); // Call syncQuote() every 10 seconds
 }
 // Load quotes from local storage on page load
 loadQuotesFromLocalStorage();
