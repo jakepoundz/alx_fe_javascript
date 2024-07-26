@@ -179,6 +179,7 @@ function updateQuotesFromServer(serverQuotes) {
   populateCategories();
   showRandomQuote();
   // Display a notification (optional)
+  alert("Quotes synced with server!");
   // alert("Quotes synced with server.");
 }
 // Function to initiate the syncing process
